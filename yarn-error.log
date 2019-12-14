@@ -1,0 +1,69 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js init
+
+PATH: 
+  C:\Users\Notebook\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Notebook\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\apache-maven-3.6.2\bin;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Users\Notebook\AppData\Local\Programs\Python\Python38-32\Scripts;C:\Users\Notebook\AppData\Local\Programs\Python\Python38-32;C:\Users\Notebook\AppData\Local\Microsoft\WindowsApps;C:\Users\Notebook\AppData\Local\Programs\Microsoft VS Code\bin;C:\AppServ\Apache2.2\bin;C:\AppServ\php5;C:\AppServ\MySQL\bin;C:\Users\Notebook\AppData\Roaming\npm;C:\Users\Notebook\AppData\Local\Yarn\bin;C:\Users\Notebook\AppData\Local\hyper\app-3.0.2\resources\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.17.3
+
+Node version: 
+  10.16.3
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:136724:13)
+      at Interface.emit (events.js:198:13)
+      at Interface._ttyWrite (readline.js:801:16)
+      at ReadStream.onkeypress (readline.js:184:10)
+      at ReadStream.emit (events.js:198:13)
+      at emitKeys (internal/readline.js:424:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1075:36)
+      at ReadStream.emit (events.js:198:13)
+      at addChunk (_stream_readable.js:288:12)
+
+npm manifest: 
+  {
+    "name": "controledegastos-frontend",
+    "version": "0.0.1",
+    "description": "Controle de Gastos",
+    "productName": "Controle de Gastos",
+    "cordovaId": "org.cordova.quasar.app",
+    "author": "= <luiseduardo.0708@gmail.com>",
+    "private": true,
+    "scripts": {
+      "lint": "eslint --ext .js,.vue src",
+      "test": "echo \"No test specified\" && exit 0"
+    },
+    "dependencies": {
+      "@quasar/extras": "^1.0.0",
+      "axios": "^0.18.1",
+      "quasar": "^1.0.0"
+    },
+    "devDependencies": {
+      "@quasar/app": "^1.0.0",
+      "@vue/eslint-config-standard": "^4.0.0",
+      "babel-eslint": "^10.0.1",
+      "eslint": "^5.10.0",
+      "eslint-loader": "^2.1.1",
+      "eslint-plugin-vue": "^5.0.0"
+    },
+    "engines": {
+      "node": ">= 8.9.0",
+      "npm": ">= 5.6.0",
+      "yarn": ">= 1.6.0"
+    },
+    "browserslist": [
+      "last 1 version, not dead, ie >= 11"
+    ]
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
