@@ -55,13 +55,14 @@ module.exports = function (ctx) {
         'QSelect',
         'QDate',
         'QPopupProxy',
-        'QUploader'
+        'QUploader',
+        'QRadio'
       ],
 
       directives: ['Ripple'],
 
       // Quasar plugins
-      plugins: ['Notify']
+      plugins: ['Notify', 'Dialog']
     },
 
     supportIE: false,
@@ -173,4 +174,4 @@ module.exports = function (ctx) {
       }
     }
   }
-};
+}

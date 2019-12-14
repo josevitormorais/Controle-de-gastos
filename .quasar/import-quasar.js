@@ -13,7 +13,7 @@
 
 import Vue from 'vue'
 
-import {Quasar,QLayout,QHeader,QDrawer,QPageContainer,QPage,QToolbar,QToolbarTitle,QBtn,QIcon,QList,QItem,QItemSection,QItemLabel,QTable,QTh,QTr,QTd,QCard,QCardSection,QDialog,QInput,QToggle,QTooltip,QSelect,QDate,QPopupProxy,QUploader,Ripple,Notify} from 'quasar'
+import {Quasar,QLayout,QHeader,QDrawer,QPageContainer,QPage,QToolbar,QToolbarTitle,QBtn,QIcon,QList,QItem,QItemSection,QItemLabel,QTable,QTh,QTr,QTd,QCard,QCardSection,QDialog,QInput,QToggle,QTooltip,QSelect,QDate,QPopupProxy,QUploader,QRadio,Ripple,Notify,Dialog} from 'quasar'
 
 
-Vue.use(Quasar, { config: {},components: {QLayout,QHeader,QDrawer,QPageContainer,QPage,QToolbar,QToolbarTitle,QBtn,QIcon,QList,QItem,QItemSection,QItemLabel,QTable,QTh,QTr,QTd,QCard,QCardSection,QDialog,QInput,QToggle,QTooltip,QSelect,QDate,QPopupProxy,QUploader},directives: {Ripple},plugins: {Notify} })
+Vue.use(Quasar, { config: {},components: {QLayout,QHeader,QDrawer,QPageContainer,QPage,QToolbar,QToolbarTitle,QBtn,QIcon,QList,QItem,QItemSection,QItemLabel,QTable,QTh,QTr,QTd,QCard,QCardSection,QDialog,QInput,QToggle,QTooltip,QSelect,QDate,QPopupProxy,QUploader,QRadio},directives: {Ripple},plugins: {Notify,Dialog} })

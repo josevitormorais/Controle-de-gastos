@@ -7,17 +7,17 @@
           </q-card-section>
           <q-card-section>
         <q-input
-          ref="refCategoriaNova"
-          label="Nome"
-          autofocus
-          type="text"
-          counter
-          maxlength="30"
-          v-model="categoriaNova.nome "
-          lazy-rules
-          :rules="[val => && val.length > 0 || 'Nome é obrigatorio' ]"
-          dense>
-        </q-input>
+              ref="refCategoriaNova"
+              label="Nome"
+              autofocus
+              Type="text"
+              counter
+              maxlength="50"
+              v-model="categoriaNova.nome"
+              lazy-rules
+              :rules="[ val => val && val.length > 0 || 'Nome é obrigatório']"
+              dense>
+            </q-input>
         </q-card-section>
         <q-card-section>
           <div class="row">
@@ -28,8 +28,11 @@
             </q-btn>
           </div>
           <div class="col-sm-6 text-right">
-            <q-btn color="positive" label="Salvar" type="submit" @click="salvar">
-
+            <q-btn
+            color="positive"
+            label="Salvar"
+            type="submit"
+            @click="salvar">
             </q-btn>
           </div>
 
@@ -42,14 +45,15 @@
       <q-card-section>
         <div class="row q-gutter-sm"></div>
         <div class="col-6">
-        <q-input
-          ref="refNome"
-          label="Nome"
-          type="text"
-          counter
-          maxlength="30"
-          v-model="nomePesquisa"
-          dense>
+       <q-input
+        ref="refNome"
+        label="Nome"
+        Type="text"
+        counter
+        maxlength="30"
+        v-model="nomePesquisa"
+        @keypress.enter="pesquisarCategoria"
+        dense>
         </q-input>
         </div>
         <div class="row">
@@ -77,13 +81,13 @@
             <q-td>{{categoria.nome}}</q-td>
             <div style="float: right;">
             <q-td class="col-md-1">
-              <q-btn flat dense size="sm" color="blue" icon="fas fa-search" @click="visualizarCategoria()"/>
+              <q-btn flat dense size="sm" color="blue" icon="fas fa-search" @click="visualizarCategoria(categoria)"/>
             </q-td>
             <q-td class="col-md-1">
-              <q-btn flat dense size="sm" color="orange" icon="fas fa-pencil-alt" @click="editarCategoria()"/>
+              <q-btn flat dense size="sm" color="orange" icon="fas fa-pencil-alt" @click="editarCategoria(categoria)"/>
             </q-td>
             <q-td class="col-md-1">
-              <q-btn flat dense size="sm" color="red" icon="fas fa-trash-alt" @click="excluirCategoria()"/>
+              <q-btn flat dense size="sm" color="red" icon="fas fa-trash-alt" @click="confirmarExclusao(categoria)"/>
             </q-td>
             </div>
           </q-tr>
@@ -103,14 +107,37 @@ export default {
       nomePesquisa: ' ',
       categoriaList: [],
       categoriaNova: {},
-      dialogNovaCategoria: false
+      dialogNovaCategoria: false,
+      desabilitarEdicao: false
     }
   },
   methods: {
     salvar () {
-      this.$refs.categoriaNova.validate()
-      if(this.$refs.categoriaNova.hasError)
-
+      this.$refs.refCategoriaNova.validate()
+      if (this.$refs.refCategoriaNova.hasError) {
+        this.formHasError = true
+      } else {
+        // verificar se existe um código atribuído
+        if (!this.categoriaNova.codigo) {
+          this.$axios.post(api.CATEGORIA, this.categoriaNova).then(result => {
+            util.mensagemSucessoAoSalvar()
+            this.limparObjetoCategoriaAoSalvar()
+            this.listarCategori()
+          }).catch((error) => {
+            util.mensagemFalha(error)
+          })
+        } else {
+          let filtro = '/'.concat(this.categoriaNova.codigo)
+          // concatenando com a categoria
+          this.$$axios.put(api.CATEGORIA.concat(filtro), this.categoriaNova).then((result) => {
+            util.mensagemSucessoAoAtualizar()
+            this.limparObjetoCategoriaAoSalvar()
+            this.listarCategoria()
+          }).catch((error) => {
+            util.mensagemFalha(error)
+          })
+        }
+      }
     },
     listarCategoria () {
       this.$axios.get(api.CATEGORIA).then((result) => {
@@ -128,13 +155,37 @@ export default {
       })
     },
     visualizarCategoria (categoria) {
-
+      this.categoriaNova = categoria
+      this.dialogNovaCategoria = true
+      this.desabilitarEdicao = true
     },
     editarCategoria (categoria) {
-
+      this.categoriaNova = categoria
+      this.dialogNovaCategoria = true
+      this.desabilitarEdicao = true
     },
     excluirCategoria (categoria) {
-
+      var filtro = '/'.concat(categoria.codigo)
+      this.$axios.delete(api.CATEGORIA.concat(filtro)).then((result) => {
+        util.mensagemSucessoAoDeletar()
+        this.listarCategoria()
+      }).catch((error) => {
+        util.mensagemFalha(error)
+      })
+    },
+    confirmarExclusao (categoria) {
+      this.$q.dialog({
+        title: 'excluir',
+        message: 'deseja excluir......'.concat(categoria.nome).concat('?'),
+        cancel: true,
+        persistent: true
+      }).onOk(() => {
+        this.excluirCategoria(categoria)
+      })
+    },
+    limparObjetoCategoriaAoSalvar () {
+      this.categoriaNova = {}
+      this.dialogNovaCategoria = false
     }
   },
   mounted () {

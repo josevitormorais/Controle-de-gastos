@@ -29,11 +29,21 @@
         <q-item-label header>Menu</q-item-label>
         <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
           <q-item-section avatar>
-            <q-icon name="school" />
+            <q-icon name="category" />
           </q-item-section>
           <q-item-section>
             <q-item to="/privado/categoria/pesquisa">
               <q-item-label>Categoria</q-item-label>
+            </q-item>
+          </q-item-section>
+        </q-item>
+         <q-item clickable tag="a" target="_blank" href="https://quasar.dev">
+          <q-item-section avatar>
+            <q-icon name="school" />
+          </q-item-section>
+          <q-item-section>
+            <q-item to="/privado/lancamento/pesquisa">
+              <q-item-label>Lançamento</q-item-label>
             </q-item>
           </q-item-section>
         </q-item>

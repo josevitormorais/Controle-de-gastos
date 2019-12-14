@@ -9,6 +9,16 @@ const routes = [
         name: 'categoriaPesquisa',
         path: '/privado/categoria/pesquisa',
         component: () => import('pages/privado/categoria/CategoriaPesquisa.vue')
+      },
+      {
+        name: 'lancamentoPesquisa',
+        path: '/privado/lancamento/pesquisa',
+        component: () => import('pages/privado/lancamento/lancamentoPesquisa.vue')
+      },
+      {
+        name: 'lancamentoCadastro',
+        path: '/privado/lancamento/cadastro',
+        component: () => import('pages/privado/lancamento/lancamentoCadastro.vue')
       }
     ]
   }
